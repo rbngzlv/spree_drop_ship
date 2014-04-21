@@ -2,7 +2,7 @@ Spree::Shipment.class_eval do
 
   has_many :payments, as: :payable
 
-  scope :by_supplier, -> (supplier_id) { joins(:stock_location).where(spree_stock_locations: { supplier_id: supplier_id }) }
+  scope :by_supplier, ->(supplier_id) { joins(:stock_location).where(spree_stock_locations: { supplier_id: supplier_id }) }
 
   delegate :supplier, to: :stock_location
 
